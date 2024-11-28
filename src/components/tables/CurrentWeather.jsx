@@ -18,7 +18,9 @@ export default function CurrentWeather({ lat, lon, onViewPast }) {
     useEffect(() => {
         async function fetchPastData() {
             const requests = [];
-            for (let id = 1; id <= 4; id++) {
+            const ids = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/pastPos/getAll`);
+            // id should not be hardcoded
+            for (let id = 1; id <= ids.data.length; id++) {
                 requests.push(
                     axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/pastPos/cntWea/${id}`)
                 );
