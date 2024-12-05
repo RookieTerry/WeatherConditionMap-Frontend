@@ -45,7 +45,7 @@ function App() {
     // show all the stored positions on the map
     const fetchAllPastPos = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/pastPos/getAll`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/.netlify/functions/PastPosRouter/getAll`);
         setLocations(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
