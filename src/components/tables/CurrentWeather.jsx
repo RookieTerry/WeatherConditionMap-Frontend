@@ -18,11 +18,11 @@ export default function CurrentWeather({ lat, lon, onViewPast }) {
     useEffect(() => {
         async function fetchPastData() {
             const requests = [];
-            const ids = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/pastPos/getAll`);
+            const ids = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/.netlify/functions/PastPosRouter/getAll`);
             // id should not be hardcoded
             for (let id = 1; id <= ids.data.length; id++) {
                 requests.push(
-                    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/pastPos/cntWea/${id}`)
+                    axios.get(`${import.meta.env.VITE_BACKEND_URL}/.netlify/functions/PastPosRouter/pastPos/cntWea/${id}`)
                 );
             }
             try {
@@ -36,7 +36,7 @@ export default function CurrentWeather({ lat, lon, onViewPast }) {
 
         async function fetchCurrentData() {
             try {
-                const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/cntPos/cntWea`, {
+                const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/.netlify/functions/CntPosRouter/cntPos/cntWea`, {
                     lat: lat,
                     lon: lon
                 }, {
