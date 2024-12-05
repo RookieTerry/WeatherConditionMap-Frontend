@@ -13,7 +13,7 @@ export default function CntPosCntWea({ lat, lon, onViewPast }) {
   useEffect(() => {
     async function getData() {
       try {
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/cntPos/cntWea`, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/.netlify/functions/CntPosRouter/cntPos/cntWea`, {
           lat: lat,
           lon: lon
         }, {
