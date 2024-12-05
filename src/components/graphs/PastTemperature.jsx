@@ -7,7 +7,7 @@ const PastTemperature = ({id}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/pastPos/pastWea/${id}`);
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/.netlify/functions/PastPosRouter/pastPos/pastWea/${id}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
